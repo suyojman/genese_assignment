@@ -9,12 +9,13 @@ class FaceRecognition:
         self.access_token = token
         self.client = boto3.client("rekognition", aws_access_key_id=self.aws_key,
                                    aws_secret_access_key=self.aws_secret,
-                                   aws_session_token=self.access_token
+                                   aws_session_token=self.access_token,
+                                   region_name='us-east-1'
                                    )
 
     def detection(self):
         """Read file and response it with result"""
-        with open(self.photo, 'rb') as image:
+        with open(self.file_path, 'rb') as image:
             response = self.client.detect_faces(Image={
                 'Bytes': image.read()
             },
