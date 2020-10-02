@@ -38,13 +38,3 @@ class FaceRecognition:
         else:
             result = 'Face was not found'
         return result
-
-    def run(self):
-        details = self.face_detection()
-        if isinstance(details, dict):
-            print('**************************The candidate has the following details*********************************')
-            for each_key in details.keys():
-                print(each_key + '=' + str(details[each_key]))
-
-        else:
-            print(details)
